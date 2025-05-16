@@ -47,13 +47,14 @@ $array_filas = $select_pre->fetchAll();
 <head>
 <?php include_once 'modulos/meta.php';?>
     <title>Colores</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
 <?php include_once 'modulos/header.php';?>
     <main>
+        
+        <!-- MOSTRAMOS LOS AMIGOS CON SUS COLORES -->
         <section>
             <h2>Nuestros amigos</h2>
 
@@ -69,9 +70,12 @@ $array_filas = $select_pre->fetchAll();
                         <a href="colores.php?id=<?= $fila['id_color'] ?>&usuario=<?= $fila['usuario'] ?>&color=<?= $fila['color_es'] ?>" title="Modificar valores">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
-
-                        <a href="delete.php?id=<?= $fila['id_color'] ?>" title="Eliminar elemento">
-                            <i class="fa-solid fa-trash-can"></i>
+                        <form action="delete.php" method="POST">
+                            <input type="hidden" name="quitar" id="quitar" value="<?= $fila['id_color'] ?>">
+                        <button> <i class="fa-solid fa-trash-can"></i></button>
+                        </form>
+                        <!-- <a href="delete.php?id=" title="Eliminar elemento"> -->
+                           
                         </a>
 
                     </span>
@@ -79,6 +83,8 @@ $array_filas = $select_pre->fetchAll();
 
             <?php endforeach ?>
         </section>
+
+        <!-- FORMULARIOS -->
         <section >
 
             <?php if ($_GET) : ?>
@@ -112,6 +118,7 @@ $array_filas = $select_pre->fetchAll();
                     <form name="formInsert" class="formColores">
 <input type="hidden" name="id_usuario" value="<?= $_SESSION['id_usuario'] ?>">
                     <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+                    
                     <input type="text" name="web" style="display:none">
                     <fieldset>
                         <div>

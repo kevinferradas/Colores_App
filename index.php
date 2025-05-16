@@ -2,6 +2,15 @@
 session_start(); // -> $_SESSION
 $_SESSION['token'] = bin2hex(random_bytes(64));
 
+$num_random = random_int(0,4);
+$imagenes = [
+    ['src'=> 'colibri.jpg','alt'=>'colibri de colores'],
+    ['src'=> 'colores.webp','alt'=>'colores de colores'],
+    ['src'=> 'fila.jpg','alt'=>'fila de colores'],
+    ['src'=> 'mancha.jpg','alt'=>'mancha de colores'],
+    ['src'=> 'pinkFloyd.jpg','alt'=>'pinkFloyd de colores']
+];
+
 
 // include 'connection.php';
 // require 'connection.php';
@@ -30,7 +39,7 @@ $idioma = $_SESSION['idioma'] ?? "CAT";
 <?php include_once 'modulos/header.php';?>
     <main class="main-index">
         <section>
-            <img src="img/colores.webp" alt="Manos pintadas con colores vivos">
+            <img src="img/<?= $imagenes[$num_random]['src']?>" alt="<?= $imagenes[$num_random]['alt']?>">
         </section>
         <section >
 <?php

@@ -4,7 +4,7 @@
 // $host = "localhost";
 $host = "127.0.0.1";
 $database = "colores";
-$port = 3307;
+$port = 3307; // Puerto en el que el servidor MySQL está escuchando
 $user = "colores";
 $password = "colores";
 
